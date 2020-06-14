@@ -74,6 +74,8 @@ p{
 }
 
 .input{
+	appearance: none;
+	margin: 0;
 	width: 90%;
 	border:2px solid #0cf;
 	background-color: transparent;
@@ -83,12 +85,13 @@ p{
 button{
 	cursor: pointer;
 }
-.slider {
+
+input[type=range]{
 	-webkit-appearance: none;
 	margin: 0px 0px 5% 0%;
 	width: 92%;
 	height: 5px;
-	background: linear-gradient(90deg, #8ff 0%, #0cf 100%);
+	background: linear-gradient(90deg, #44f 2%, #8ff 50%, #44f 98%);
 	outline: none;
 	opacity: 1;
 }
@@ -99,7 +102,7 @@ button{
 }
 
   
-.slider::-webkit-slider-thumb {
+input[type=range]::-webkit-slider-thumb {
 	-webkit-appearance: none;
 	-webkit-transform: rotate(-45deg);
 	border:2px solid #0fa;
@@ -110,12 +113,14 @@ button{
 	cursor: pointer;
 }
   
-.slider::-moz-range-thumb {
-	-webkit-transform: rotate(-45deg);
+input[type=range]::-moz-range-thumb {
+	-moz-transform: rotate(-45deg);
+	border:2px solid #0fa;
 	width: 25px;
 	height: 25px;
-	background: #0cf;
+	background: #44f;
 	cursor: pointer;
+	border-radius 0px;
 }
 
 .customisation_div{
@@ -148,4 +153,14 @@ button{
 }
 
 .show_div{
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
 }
