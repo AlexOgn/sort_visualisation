@@ -10,24 +10,27 @@
 			var palette = ["#0cf", "#8ff", "#0fa" ];
 		</script>
 		<div id="script_sourcing">
+			<script src="buttons/stop_button.js"></script>
 			<script src="buttons/slider_value.js"></script>
-			<script src="show.js"></script>
+			<script src="buttons/show.js"></script>
 			<script src="clone.js"></script>
 			<script src="drawer.js"></script>
 			<script src="pilon.js"></script>
 			<script src="sleep.js"></script>
 			<script src="acceptable_number.js"></script>
-			<script src="sorts/bubble.js"></script>
-			<script src="sorts/cocktail.js"></script>
-			<script src="sorts/insertion.js"></script>
-			<script src="sorts/heap.js"></script>
-			<script src="sorts/selection.js"></script>
-			<script src="sorts/merge.js"></script>
-			<script src="sorts/counting.js"></script>
-			<script src="sorts/quick.js"></script>
-			<script src="sorts/radix.js"></script>
-			<script src="sorts/odd-even.js"></script>
-			<script src="sorts/shell.js"></script>
+			<div id="sorts">
+				<script src="sorts/bubble.js"></script>
+				<script src="sorts/cocktail.js"></script>
+				<script src="sorts/insertion.js"></script>
+				<script src="sorts/heap.js"></script>
+				<script src="sorts/selection.js"></script>
+				<script src="sorts/merge.js"></script>
+				<script src="sorts/counting.js"></script>
+				<script src="sorts/quick.js"></script>
+				<script src="sorts/radix.js"></script>
+				<script src="sorts/odd-even.js"></script>
+				<script src="sorts/shell.js"></script>
+			</div>
 			<script src="background.js"></script>
 			<script src="complex.js"></script>
 			<script src="make_shuffeled_piloni.js"></script>
@@ -48,27 +51,27 @@
 		<table class="Table">
 			<thead>
 				<tr id="Table-Section-Names">
-					<th>Algorithm name:</th>
+					<th>Видове методи за сортиране:</th>
 				</tr>
 			</thead>
 			<tbody>
 				<div id = "bubble_sort">
 					<tr id="Sorting-type">
 						<td class="Sort-Name">
-							<p>Bubble sort</p> 
-							<button type="submit" class="Extend" id="bubble_show_button" onclick="show('bubble_show_button', 'bubble_div', bubble_pause, bubble_resume);" >Show Visualisation</button>
-							<div class="show_div" id="bubble_div" style="display: none;">
+							<p>Метод на мехурчето</p> 
+							<button type="submit" class="Extend" id="bubble_show_button" onclick="show_options('bubble_show_button', 'bubble_div', bubble_pause, bubble_resume);" >Показване на Визуализацията</button>
+							<button type="submit" class="Extend" id="bubble_text_show_button" onclick="show_text('bubble_text_show_button', 'bubble_text');" >Показване на Информацията</button>
+							<div class="show_options_div" id="bubble_div" style="display: none;">
 								<div class = "customisation_div">
-									<div style="display: inline-block;"><p>Delay in milliseconds:</p></div>
+									<div style="display: inline-block;"><p>Забавяне във милисекунди:</p></div>
 									<div style="display: inline-block;"><input type="number" class="SliderValue" id="slider_text_bubble" value="500" disabled="disabled"></div>
 									<input type="range" min="0" max="1000" value="500"  id="bubble_delay" oninput="show_slider_value('slider_text_bubble', bubble_slider_value=value);">
 									<br>
-									<script src="buttons/stop_button.js"></script>
-									<p class="customization_text">Number of Pilons: </p>
+									<p class="customization_text">Брой пилони </p>
 									<input type="number" class="input" id="bubble_n" value="30">
 									<br>
-									<button type="submit" class="reset_button" onclick="bubble_n=document.getElementById('bubble_n').value;bubble_reset(canvas_bubble, acceptable_number(bubble_n), palette)"> Reset Visualisation</button>
-									<button type="submit" class="reset_button" id="bubble_stop_button" onclick="stop_button('bubble_stop_button', bubble_pause, bubble_resume)">Pause Visualisation</button>
+									<button type="submit" class="reset_button" onclick="bubble_n=document.getElementById('bubble_n').value;bubble_reset(canvas_bubble, acceptable_number(bubble_n), palette)"> Пренаправяне</button>
+									<button type="submit" class="reset_button" id="bubble_stop_button" onclick="stop_button('bubble_stop_button', bubble_pause, bubble_resume)">Спиране</button>
 								</div>
 								<div class="canvas_div">
 								<canvas class="sort_canvas" id="canvas_bubble">
@@ -79,26 +82,78 @@
 								</canvas>
 								</div>
 							</div>
+							<div class="show_div" id="bubble_text" style="display: none;">
+								<p>Най-бавен случай: O(n<sup>2</sup>)</p>
+								<br>
+								<p>Най-бърз случай: О(n)</p>
+								<br>
+								<p class="info_text">В най – лошия и среден случай методът на мехурчето има сложност О(n2), където n е броят на елементите, които биват сортирани. Съществуват много други алгоритми за сортиране, които имат сложност O(n log n). Дори и методът на пряката селекция, който има сложност като на метода на мехурчето, е с по – добра производителност. Следователно методът на мехурчето, не е добър избор, ако искаме да сортираме много на брой елементи. </p>
+								<p>Пример стъпка по стъпка</p>
+								<p class="info_text">Нека имаме масив със следните елементи: 5,1,4,2,8 и да го сортираме във възходящ ред като използваме метода на мехурчето. На всяка стъпка елементите, които са удебелени биват разменяни.</p>
+								<p class="info_text">
+									Първо преминаваме:
+									<br>
+									(5 1 4 2 8) &rarr; (1 5 4 2 8), Тук алгоритъмът сравнява първите два елемента и ги разменя, тъй като 5 > 1
+									<br>
+									(1 5 4 2 8) &rarr; (1 4 5 2 8), Тук алгоритъмът сравнява вторият и третият елемент и ги разменя, тъй като 5 > 4
+									<br>
+									(1 4 5 2 8) &rarr; (1 4 2 5 8), Тук алгоритъмът сравнява третият и четвъртият елемент и ги разменя, тъй като 5 > 2
+									<br>
+									(1 4 2 5 8) &rarr; (1 4 2 5 8), Тук след като елементите са вече в ред (8 > 5), алгоритъмът няма нужда да ги разменя.
+								</p>
+								<p class="info_text">
+									Второ преминаваме
+									<br>
+									(1 4 2 5 8) &rarr; (1 4 2 5 8), Тук нищо не разменя, защото първите два елемента са наредени 1 < 4
+									<br>
+									(1 4 2 5 8) &rarr; (1 2 4 5 8), Тук разменя вторият и третият елемент, тъй като 4 > 2
+									<br>
+									(1 2 4 5 8) &rarr; (1 2 4 5 8), Тук нищо не разменя, защото третият и четвъртият елемент са наредени 4 > 5
+									<br>
+									(1 2 4 5 8) &rarr; (1 2 4 5 8), Тук отново не се разменя, защото последните два елемента са наредени 5 < 8
+									<br>
+								</p>
+								<p class="info_text">
+								<p class="info_text">
+									Сега, масивът е вече сортиран, но нашият алгоритъм не знаеш дали е готов. Алгоритъмът трябва да направи още едно преминаваме, което е напълно излишно за да разбере, че масивът е сортиран.
+								</p> 
+								<p class="info_text">
+									Трето преминаваме
+									<br>
+									(1 2 4 5 8) &rarr; (1 2 4 5 8)
+									<br>
+									(1 2 4 5 8) &rarr; (1 2 4 5 8)
+									<br>
+									(1 2 4 5 8) &rarr; (1 2 4 5 8)
+									<br>
+									(1 2 4 5 8) &rarr; (1 2 4 5 8)
+								</p>
+								<br>
+								<p>Оптимизация</p>
+								<p class="info_text">
+									Методът на мехурчето може лесно да се оптимизира като наблюдаваме, че n-та итерация намира n-то най – голямо число и го слага на последно място. Затова вътрешният цикъл може да пропусне да проверява в последните n – 1 елементи когато минава за n-ти път. 
+								</p>
+							</div>
 						</td>
 					</tr>
 				</div>
 				<div id = "cocktail_sort">
 					<tr id="Sorting-type">
 						<td class="Sort-Name">
-							<p>Cocktail sort</p> 
-							<button type="submit" class="Extend" id="cocktail_show_button" onclick="show('cocktail_show_button', 'cocktail_div', cocktail_pause, cocktail_resume);" >Show Visualisation</button>
-							<div class="show_div" id="cocktail_div" style="display: none;">
+							<p>Метод на коктейла</p> 
+							<button type="submit" class="Extend" id="cocktail_show_button" onclick="show_options('cocktail_show_button', 'cocktail_div', cocktail_pause, cocktail_resume);" >Показване на Визуализацията</button>
+							<button type="submit" class="Extend" id="cocktail_text_show_button" onclick="show_text('cocktail_text_show_button', 'cocktail_text');" >Показване на Информацията</button>
+							<div class="show_options_div" id="cocktail_div" style="display: none;">
 								<div class = "customisation_div">
-									<div style="display: inline-block;"><p>Delay in milliseconds:</p></div>
+									<div style="display: inline-block;"><p>Забавяне във милисекунди:</p></div>
 									<div style="display: inline-block;"><input type="number" class="SliderValue" id="slider_text_cocktail" value="500" disabled="disabled"></div>
 									<input type="range" min="0" max="1000" value="500"  id="cocktail_delay" oninput="show_slider_value('slider_text_cocktail', cocktail_slider_value=value);">
 									<br>
-									<script src="buttons/stop_button.js"></script>
-									<p class="customization_text">Number of Pilons: </p>
+									<p class="customization_text">Брой пилони </p>
 									<input type="number" class="input" id="cocktail_n" value="30">
 									<br>
-									<button type="submit" class="reset_button" onclick="cocktail_n=document.getElementById('cocktail_n').value;cocktail_reset(canvas_cocktail, acceptable_number(cocktail_n), palette)"> Reset Visualisation</button>
-									<button type="submit" class="reset_button" id="cocktail_stop_button" onclick="stop_button('cocktail_stop_button', cocktail_pause, cocktail_resume)">Pause Visualisation</button>
+									<button type="submit" class="reset_button" onclick="cocktail_n=document.getElementById('cocktail_n').value;cocktail_reset(canvas_cocktail, acceptable_number(cocktail_n), palette)"> Пренаправяне</button>
+									<button type="submit" class="reset_button" id="cocktail_stop_button" onclick="stop_button('cocktail_stop_button', cocktail_pause, cocktail_resume)">Спиране</button>
 								</div>
 								<div class="canvas_div">
 								<canvas class="sort_canvas" id="canvas_cocktail">
@@ -109,26 +164,32 @@
 								</canvas>
 								</div>
 							</div>
+							<div class="show_div" id="cocktail_text" style="display: none;">
+								<p>Най-бавен случай: O(n<sup>2</sup>)</p>
+								<br>
+								<p>Най-бърз случай: О(n)</p>
+								<p class="info_text">Коктейл сортът, известен също като двупосочно сортиране на мехурчето, е разширение на сортирането на мехурчето. Алгоритъмът разширява сортирането на балоните, като работи в две посоки. Въпреки че е по-добро от сортирането на мехурчето, чрез по-бързо преместване на елементи до началото на списъка, той осигурява само пределни подобрения в производителността.</p>
+							</div>
 						</td>
 					</tr>
 				</div>
 				<div id = "insertion_sort">
 					<tr id="Sorting-type">
 						<td class="Sort-Name">
-							<p>Insertion sort</p> 
-							<button type="submit" class="Extend" id="insertion_show_button" onclick="show('insertion_show_button', 'insertion_div', insertion_pause, insertion_resume);" >Show Visualisation</button>
-							<div class="show_div" id="insertion_div" style="display: none;">
+							<p>Чрез вмъкване</p> 
+							<button type="submit" class="Extend" id="insertion_show_button" onclick="show_options('insertion_show_button', 'insertion_div', insertion_pause, insertion_resume);" >Показване на Визуализацията</button>
+							<button type="submit" class="Extend" id="insertion_text_show_button" onclick="show_text('insertion_text_show_button', 'insertion_text');" >Показване на Информацията</button>
+							<div class="show_options_div" id="insertion_div" style="display: none;">
 								<div class = "customisation_div">
-									<div style="display: inline-block;"><p>Delay in milliseconds:</p></div>
+									<div style="display: inline-block;"><p>Забавяне във милисекунди:</p></div>
 									<div style="display: inline-block;"><input type="number" class="SliderValue" id="slider_text_insertion" value="500" disabled="disabled"></div>
 									<input type="range" min="0" max="1000" value="500"  id="insertion_delay" oninput="show_slider_value('slider_text_insertion', insertion_slider_value=value);">
 									<br>
-									<script src="buttons/stop_button.js"></script>
-									<p class="customization_text">Number of Pilons: </p>
+									<p class="customization_text">Брой пилони </p>
 									<input type="number" class="input" id="insertion_n" value="30">
 									<br>
-									<button type="submit" class="reset_button" onclick="insertion_n=document.getElementById('insertion_n').value;insertion_reset(canvas_insertion, acceptable_number(insertion_n), palette)"> Reset Visualisation</button>
-									<button type="submit" class="reset_button" id="insertion_stop_button" onclick="stop_button('insertion_stop_button', insertion_pause, insertion_resume)">Pause Visualisation</button>
+									<button type="submit" class="reset_button" onclick="insertion_n=document.getElementById('insertion_n').value;insertion_reset(canvas_insertion, acceptable_number(insertion_n), palette)"> Пренаправяне</button>
+									<button type="submit" class="reset_button" id="insertion_stop_button" onclick="stop_button('insertion_stop_button', insertion_pause, insertion_resume)">Спиране</button>
 								</div>
 								<div class="canvas_div">
 								<canvas class="sort_canvas" id="canvas_insertion">
@@ -139,26 +200,41 @@
 								</canvas>
 								</div>
 							</div>
+							<div class="show_div" id="insertion_text" style="display: none;">
+								<p>Най-бавен случай: O(n<sup>2</sup>)</p>
+								<br>
+								<p>Най-бърз случай: О(n) (проверки) </p>
+								<br>
+								<p>Принцип на действие</p>
+								<p class="info_text">	1.Списъкът с елементи, които ще бъдат сортирани се разделя на две части: частта със сортираните елементи и частта с несортираните </p>
+								<p class="info_text">	2.При всяка стъпка се взема първият елемент от несортирания списък и се вмъква на правилната позиция в сортираната част от списъка </p>
+								<p class="info_text">	3.Сортирането продължава докато елементите от несортираната част на списъка се изчерпят </p>
+								<br>
+								<p class="info_text" >	В най-добрия случай масивът е почти сортиран. Тогава за сортирането чрез вмъкване е нужно линейно време O(n). </p>
+								<p class="info_text">	При всяка стъпка елементът, който е на ход, се сравнява с най-десния елемент от сортирания масив. </p>
+								<p class="info_text">	Пример за най-лош случай е когато масивът е напълно обърнат на обратно. Тоест подредбата на елементите ще бъде такава, че всеки следващ елемент ще бъде по-малък от предходния. При тази подредба всяка стъпка във вътрешния цикъл ще се изпълни максимален брой пъти. Това дава на сортирането чрез вмъкване квадратично време за изпълнение O(n<sup>2</sup>). </p>
+								<p class="info_text">	Средният случай също е за квадратично време, което прави сортирането чрез вмъкване непрактичен за големи масиви.</p>
+							</div>
 						</td>
 					</tr>
 				</div>
 				<div id = "heap_sort">
 					<tr id="Sorting-type">
 						<td class="Sort-Name">
-							<p>Heap sort</p> 
-							<button type="submit" class="Extend" id="heap_show_button" onclick="show('heap_show_button', 'heap_div', heap_pause, heap_resume);" >Show Visualisation</button>
-							<div class="show_div" id="heap_div" style="display: none;">
+							<p>Пирамидално сортиране</p> 
+							<button type="submit" class="Extend" id="heap_show_button" onclick="show_options('heap_show_button', 'heap_div', heap_pause, heap_resume);" >Показване на Визуализацията</button>
+							<button type="submit" class="Extend" id="heap_text_show_button" onclick="show_text('heap_text_show_button', 'heap_text');" >Показване на Информацията</button>
+							<div class="show_options_div" id="heap_div" style="display: none;">
 								<div class = "customisation_div">
-									<div style="display: inline-block;"><p>Delay in milliseconds:</p></div>
+									<div style="display: inline-block;"><p>Забавяне във милисекунди:</p></div>
 									<div style="display: inline-block;"><input type="number" class="SliderValue" id="slider_text_heap" value="500" disabled="disabled"></div>
 									<input type="range" min="0" max="1000" value="500"  id="heap_delay" oninput="show_slider_value('slider_text_heap', heap_slider_value=value);">
 									<br>
-									<script src="buttons/stop_button.js"></script>
-									<p class="customization_text">Number of Pilons: </p>
+									<p class="customization_text">Брой пилони </p>
 									<input type="number" class="input" id="heap_n" value="30">
 									<br>
-									<button type="submit" class="reset_button" onclick="heap_n=document.getElementById('heap_n').value;heap_reset(canvas_heap, acceptable_number(heap_n), palette)"> Reset Visualisation</button>
-									<button type="submit" class="reset_button" id="heap_stop_button" onclick="stop_button('heap_stop_button', heap_pause, heap_resume)">Pause Visualisation</button>
+									<button type="submit" class="reset_button" onclick="heap_n=document.getElementById('heap_n').value;heap_reset(canvas_heap, acceptable_number(heap_n), palette)"> Пренаправяне</button>
+									<button type="submit" class="reset_button" id="heap_stop_button" onclick="stop_button('heap_stop_button', heap_pause, heap_resume)">Спиране</button>
 								</div>
 								<div class="canvas_div">
 								<canvas class="sort_canvas" id="canvas_heap">
@@ -169,26 +245,35 @@
 								</canvas>
 								</div>
 							</div>
+							<div class="show_div" id="heap_text" style="display: none;">
+								<p>Най-бавен: O(n log n)</p> <br>
+								<p>Най-бърз: O(n log n) (различни параметри)</p> <br>
+								<p>Принцип на действие </p> <br>
+								<p class="info_text">Пирамидалното сортиране може да бъде разделено на две стъпки.</p> <br>
+								<p class="info_text">Първа стъпка, създава се „купчина“ от елементи на множеството. </p>
+								<p class="info_text">Втора стъпка, създава се сортиран масив, чрез взимане и премахване на най-големия елемент от пирамидална структура от данни (heap) и поставянето му в друг масив. „Купчината“ се реконструира при всяко премахване и след като всички обекти са премахнати от heap паметта, се създава пълният сортиран масив. Посоката на сортираните елементи може да бъде променена, като се избере min-heap или max-heap в първата стъпка. За да се изпълни този алгоритъм се изискват два масива – един за елементите в купчината, втори за сортирания масив. </p>
+								<p class="info_text">Пирамидалното сортиране може да бъде извършено и с един масив – когато някой елемент се премахва от „купчината“, той освобождава място, и елементът може да бъде добавен в края на същия масив. </p>
+							</div>
 						</td>
 					</tr>
 				</div>
 				<div id = "selection_sort">
 					<tr id="Sorting-type">
 						<td class="Sort-Name">
-							<p>Selection sort</p> 
-							<button type="submit" class="Extend" id="selection_show_button" onclick="show('selection_show_button', 'selection_div', selection_pause, selection_resume);" >Show Visualisation</button>
-							<div class="show_div" id="selection_div" style="display: none;">
+							<p>Чрез селекция</p> 
+							<button type="submit" class="Extend" id="selection_show_button" onclick="show_options('selection_show_button', 'selection_div', selection_pause, selection_resume);" >Показване на Визуализацията</button>
+							<button type="submit" class="Extend" id="selection_text_show_button" onclick="show_text('selection_text_show_button', 'selection_text');" >Показване на Информацията</button>
+							<div class="show_options_div" id="selection_div" style="display: none;">
 								<div class = "customisation_div">
-									<div style="display: inline-block;"><p>Delay in milliseconds:</p></div>
+									<div style="display: inline-block;"><p>Забавяне във милисекунди:</p></div>
 									<div style="display: inline-block;"><input type="number" class="SliderValue" id="slider_text_selection" value="500" disabled="disabled"></div>
 									<input type="range" min="0" max="1000" value="500"  id="selection_delay" oninput="show_slider_value('slider_text_selection', selection_slider_value=value);">
 									<br>
-									<script src="buttons/stop_button.js"></script>
-									<p class="customization_text">Number of Pilons: </p>
+									<p class="customization_text">Брой пилони </p>
 									<input type="number" class="input" id="selection_n" value="30">
 									<br>
-									<button type="submit" class="reset_button" onclick="selection_n=document.getElementById('selection_n').value;selection_reset(canvas_selection, acceptable_number(selection_n), palette)"> Reset Visualisation</button>
-									<button type="submit" class="reset_button" id="selection_stop_button" onclick="stop_button('selection_stop_button', selection_pause, selection_resume)">Pause Visualisation</button>
+									<button type="submit" class="reset_button" onclick="selection_n=document.getElementById('selection_n').value;selection_reset(canvas_selection, acceptable_number(selection_n), palette)"> Пренаправяне</button>
+									<button type="submit" class="reset_button" id="selection_stop_button" onclick="stop_button('selection_stop_button', selection_pause, selection_resume)">Спиране</button>
 								</div>
 								<div class="canvas_div">
 								<canvas class="sort_canvas" id="canvas_selection">
@@ -199,26 +284,47 @@
 								</canvas>
 								</div>
 							</div>
+							<div class="show_div" id="selection_text" style="display: none;">
+								<p>Най-бавен и Най-бърз: О(n<sup>2</sup> ) (преглеждания) О(n) (сменяния) </p><br>
+								<p class="info_text">Нека имаме масив със следните елементи: 64,25,12,22,11 и искаме да го сортираме във възходящ ред като използваме метода на пряката селекция. На всяка стъпка елементите, които са удебелени биват разменяни.</p>
+								<p class="info_text" >
+									Първо преминаване: <br>
+									64 25 12 22 11 →  25 64 12 22 11 <br>
+									25 64 12 22 11 →  12 64 25 22 11 <br>
+									12 64 25 22 11 →  12 64 25 22 11 <br>
+									12 64 25 22 11 →  11 64 25 22 12 <br>
+									След първото преминаване най-малкият елемент на масива се намира на първа позиция.	
+									Второ преминаване: <br>
+									11 64 25 22 12 →  11 25 64 22 12 <br>
+									11 25 64 22 12 →  11 22 64 25 12 <br>
+									11 22 64 25 12 →  11 12 64 25 22 <br>
+									Трето преминаване: <br>
+									11 12 64 25 22 →  11 12 25 64 22 <br>
+									11 12 25 64 22 →  11 12 22 64 25 <br>
+									Четвърто преминаване: <br>
+									11 12 22 64 25 →  11 12 22 25 64
+								</p>
+							</div>
 						</td>
 					</tr>
 				</div>
 				<div id = "merge_sort">
 					<tr id="Sorting-type">
 						<td class="Sort-Name">
-							<p>Merge sort</p> 
-							<button type="submit" class="Extend" id="merge_show_button" onclick="show('merge_show_button', 'merge_div', merge_pause, merge_resume);" >Show Visualisation</button>
-							<div class="show_div" id="merge_div" style="display: none;">
+							<p>Чрез сливане</p> 
+							<button type="submit" class="Extend" id="merge_show_button" onclick="show_options('merge_show_button', 'merge_div', merge_pause, merge_resume);" >Показване на Визуализацията</button>
+							<button type="submit" class="Extend" id="merge_text_show_button" onclick="show_text('merge_text_show_button', 'merge_text');" >Показване на Информацията</button>
+							<div class="show_options_div" id="merge_div" style="display: none;">
 								<div class = "customisation_div">
-									<div style="display: inline-block;"><p>Delay in milliseconds:</p></div>
+									<div style="display: inline-block;"><p>Забавяне във милисекунди:</p></div>
 									<div style="display: inline-block;"><input type="number" class="SliderValue" id="slider_text_merge" value="500" disabled="disabled"></div>
 									<input type="range" min="0" max="1000" value="500"  id="merge_delay" oninput="show_slider_value('slider_text_merge', merge_slider_value=value);">
 									<br>
-									<script src="buttons/stop_button.js"></script>
-									<p class="customization_text">Number of Pilons: </p>
+									<p class="customization_text">Брой пилони </p>
 									<input type="number" class="input" id="merge_n" value="30">
 									<br>
-									<button type="submit" class="reset_button" onclick="merge_n=document.getElementById('merge_n').value;merge_reset(canvas_merge, acceptable_number(merge_n), palette)"> Reset Visualisation</button>
-									<button type="submit" class="reset_button" id="merge_stop_button" onclick="stop_button('merge_stop_button', merge_pause, merge_resume)">Pause Visualisation</button>
+									<button type="submit" class="reset_button" onclick="merge_n=document.getElementById('merge_n').value;merge_reset(canvas_merge, acceptable_number(merge_n), palette)"> Пренаправяне</button>
+									<button type="submit" class="reset_button" id="merge_stop_button" onclick="stop_button('merge_stop_button', merge_pause, merge_resume)">Спиране</button>
 								</div>
 								<div class="canvas_div">
 								<canvas class="sort_canvas" id="canvas_merge">
@@ -229,26 +335,34 @@
 								</canvas>
 								</div>
 							</div>
+							<div class="show_div" id="merge_text" style="display: none;">
+								<p> Най-бавен: O(n log n)</p> <br>
+								<p> Най-бърз: O(n log n) typical, O(n) natural variant</p> <br>
+								<p> Принцип на действие </p>
+								<p class="info_text">1. Несортираният списък по произволен начин се разделя на два подсписъка с приблизително еднаква дължина (за линейно време) </p> <br>
+								<p class="info_text">2. Рекурсивно се разделят подсписъците, докато не се достигне до списъци с единична дължина </p> <br>
+								<p class="info_text">3. Сливат се два подсписъка в нов сортиран списък (за линейно време)</p>
+							</div>
 						</td>
 					</tr>
 				</div>
 				<div id = "quick_sort">
 					<tr id="Sorting-type">
 						<td class="Sort-Name">
-							<p>Quick sort</p> 
-							<button type="submit" class="Extend" id="quick_show_button" onclick="show('quick_show_button', 'quick_div', quick_pause, quick_resume);" >Show Visualisation</button>
-							<div class="show_div" id="quick_div" style="display: none;">
+							<p>Бързо сортиране</p> 
+							<button type="submit" class="Extend" id="quick_show_button" onclick="show_options('quick_show_button', 'quick_div', quick_pause, quick_resume);" >Показване на Визуализацията</button>
+							<button type="submit" class="Extend" id="quick_text_show_button" onclick="show_text('quick_text_show_button', 'quick_text');" >Показване на Информацията</button>
+							<div class="show_options_div" id="quick_div" style="display: none;">
 								<div class = "customisation_div">
-									<div style="display: inline-block;"><p>Delay in milliseconds:</p></div>
+									<div style="display: inline-block;"><p>Забавяне във милисекунди:</p></div>
 									<div style="display: inline-block;"><input type="number" class="SliderValue" id="slider_text_quick" value="500" disabled="disabled"></div>
 									<input type="range" min="0" max="1000" value="500"  id="quick_delay" oninput="show_slider_value('slider_text_quick', quick_slider_value=value);">
 									<br>
-									<script src="buttons/stop_button.js"></script>
-									<p class="customization_text">Number of Pilons: </p>
+									<p class="customization_text">Брой пилони </p>
 									<input type="number" class="input" id="quick_n" value="30">
 									<br>
-									<button type="submit" class="reset_button" onclick="quick_n=document.getElementById('quick_n').value;quick_reset(canvas_quick, acceptable_number(quick_n), palette)"> Reset Visualisation</button>
-									<button type="submit" class="reset_button" id="quick_stop_button" onclick="stop_button('quick_stop_button', quick_pause, quick_resume)">Pause Visualisation</button>
+									<button type="submit" class="reset_button" onclick="quick_n=document.getElementById('quick_n').value;quick_reset(canvas_quick, acceptable_number(quick_n), palette)"> Пренаправяне</button>
+									<button type="submit" class="reset_button" id="quick_stop_button" onclick="stop_button('quick_stop_button', quick_pause, quick_resume)">Спиране</button>
 								</div>
 								<div class="canvas_div">
 								<canvas class="sort_canvas" id="canvas_quick">
@@ -259,26 +373,44 @@
 								</canvas>
 								</div>
 							</div>
+							<div class="show_div" id="quick_text" style="display: none;">
+								<p> Най-бавен: О(n <sup>2</sup>) <br></p>
+								<p>Най-бърз: O(n log n) <br></p>
+								<p> Принципи на действие</p> <br>
+								<p class="info_text" >1.Избира се „главен“ елемент от списъка с елементи, които ще бъдат сортирани.</p> <br>
+								<p class="info_text" >2.Списъкът се пренарежда така, че всички елементи, които са по-малки от „главния“ се поставят вляво от него, а всички, които са по-големи – вдясно от него.</p><br>
+								<p class="info_text" >3.Рекурсивно се повтарят горните стъпки върху списъка с по-малките и списъка с по-големите елементи.</p> <br>
+								<p class="info_text" >4.Получените списъци се сливат (конкатенация) и се получава сортираният списък.</p><br>
+								<p>Пример</p><br>
+								<p class="info_text" >[5 3 2 8 7 6 1 9 4]</p> <br>
+								<p class="info_text" >За „главен“ елемент избираме 5. Разделяме списъка на три части: елементи, по-малки от „главния“, „главния“, елементи, по-големи от главния. </p> <br>
+								<p class="info_text" >[3 2 1 4] | [5] | [8 7 6 9]</p> <br>
+								<p class="info_text" >Рекурсивно извършваме действията върху новополучените списъци. </p> <br>
+								<p class="info_text" >[2 1] | [3] | [4] | [5] | [7 6] | [8] | [9]</p> <br>
+								<p class="info_text" >[1] | [2] | [3] | [4] | [5] | [6] | [7] | [8] | [9]</p> <br>
+								<p class="info_text" >Свързваме отделните списъци и получаваме сортирания списък. </p> <br>
+								<p class="info_text" >[1 2 3 4 5 6 7 8 9]</p> <br>
+							</div>
 						</td>
 					</tr>
 				</div>
 				<div id = "counting_sort">
 					<tr id="Sorting-type">
 						<td class="Sort-Name">
-							<p>Counting sort</p> 
-							<button type="submit" class="Extend" id="counting_show_button" onclick="show('counting_show_button', 'counting_div', counting_pause, counting_resume);" >Show Visualisation</button>
-							<div class="show_div" id="counting_div" style="display: none;">
+							<p>Чрез броене</p> 
+							<button type="submit" class="Extend" id="counting_show_button" onclick="show_options('counting_show_button', 'counting_div', counting_pause, counting_resume);" >Показване на Визуализацията</button>
+							<button type="submit" class="Extend" id="counting_text_show_button" onclick="show_text('counting_text_show_button', 'counting_text');" >Показване на Информацията</button>
+							<div class="show_options_div" id="counting_div" style="display: none;">
 								<div class = "customisation_div">
-									<div style="display: inline-block;"><p>Delay in milliseconds:</p></div>
+									<div style="display: inline-block;"><p>Забавяне във милисекунди:</p></div>
 									<div style="display: inline-block;"><input type="number" class="SliderValue" id="slider_text_counting" value="500" disabled="disabled"></div>
 									<input type="range" min="0" max="1000" value="500"  id="counting_delay" oninput="show_slider_value('slider_text_counting', counting_slider_value=value);">
 									<br>
-									<script src="buttons/stop_button.js"></script>
-									<p class="customization_text">Number of Pilons: </p>
+									<p class="customization_text">Брой пилони </p>
 									<input type="number" class="input" id="counting_n" value="30">
 									<br>
-									<button type="submit" class="reset_button" onclick="counting_n=document.getElementById('counting_n').value;counting_reset(canvas_counting, acceptable_number(counting_n), palette)"> Reset Visualisation</button>
-									<button type="submit" class="reset_button" id="counting_stop_button" onclick="stop_button('counting_stop_button', counting_pause, counting_resume)">Pause Visualisation</button>
+									<button type="submit" class="reset_button" onclick="counting_n=document.getElementById('counting_n').value;counting_reset(canvas_counting, acceptable_number(counting_n), palette)"> Пренаправяне</button>
+									<button type="submit" class="reset_button" id="counting_stop_button" onclick="stop_button('counting_stop_button', counting_pause, counting_resume)">Спиране</button>
 								</div>
 								<div class="canvas_div">
 								<canvas class="sort_canvas" id="canvas_counting">
@@ -289,26 +421,31 @@
 								</canvas>
 								</div>
 							</div>
+							<div class="show_div" id="counting_text" style="display: none;">
+								<p>О(n+k) k е не отрицателно число</p>
+								<p class="info_text" >Тъй като алгоритъмът използва само for цикли без рекурсия или извикване на подпрограма, той е лесен за анализиране. Инициализацията на масива Count и вторият цикъл, който пресмята префикс сумата на масива Count – всяко едно от тези действия обхожда най-много k + 1 пъти и затова отнема O(k) време. Другите два for цикъла и инициялизацията на изходния масив – всяко изисква O(n) време. Затова времето за изпълнение на този алгоритъм е сумата на времената, необходими за изпълнението на тези стъпки, O(n + k)</p><br>
+								<p class="info_text">Тъй като се използват масиви с дължина k + 1 и n, общата памет, използвана от алгоритъма, също е O(n + k). За проблемните случаи, в които максималната ключова стойност е значително по-малка, от броя на елементите, сортирането чрез броене може да бъде високо ефективно, тъй като единствената памет, която използва, освен входните данни и изходния масив, е масивът Count, който използва O(k) място</p>
+							</div>
 						</td>
 					</tr>
 				</div>
 				<div id = "radix_sort">
 					<tr id="Sorting-type">
 						<td class="Sort-Name">
-							<p>Radix sort</p> 
-							<button type="submit" class="Extend" id="radix_show_button" onclick="show('radix_show_button', 'radix_div', radix_pause, radix_resume);" >Show Visualisation</button>
-							<div class="show_div" id="radix_div" style="display: none;">
+							<p>Радикс сортиране</p> 
+							<button type="submit" class="Extend" id="radix_show_button" onclick="show_options('radix_show_button', 'radix_div', radix_pause, radix_resume);" >Показване на Визуализацията</button>
+							<button type="submit" class="Extend" id="radix_text_show_button" onclick="show_text('radix_text_show_button', 'radix_text');" >Показване на Информацията</button>
+							<div class="show_options_div" id="radix_div" style="display: none;">
 								<div class = "customisation_div">
-									<div style="display: inline-block;"><p>Delay in milliseconds:</p></div>
+									<div style="display: inline-block;"><p>Забавяне във милисекунди:</p></div>
 									<div style="display: inline-block;"><input type="number" class="SliderValue" id="slider_text_radix" value="500" disabled="disabled"></div>
 									<input type="range" min="0" max="1000" value="500"  id="radix_delay" oninput="show_slider_value('slider_text_radix', radix_slider_value=value);">
 									<br>
-									<script src="buttons/stop_button.js"></script>
-									<p class="customization_text">Number of Pilons: </p>
+									<p class="customization_text">Брой пилони </p>
 									<input type="number" class="input" id="radix_n" value="30">
 									<br>
-									<button type="submit" class="reset_button" onclick="radix_n=document.getElementById('radix_n').value;radix_reset(canvas_radix, acceptable_number(radix_n), palette)"> Reset Visualisation</button>
-									<button type="submit" class="reset_button" id="radix_stop_button" onclick="stop_button('radix_stop_button', radix_pause, radix_resume)">Pause Visualisation</button>
+									<button type="submit" class="reset_button" onclick="radix_n=document.getElementById('radix_n').value;radix_reset(canvas_radix, acceptable_number(radix_n), palette)"> Пренаправяне</button>
+									<button type="submit" class="reset_button" id="radix_stop_button" onclick="stop_button('radix_stop_button', radix_pause, radix_resume)">Спиране</button>
 								</div>
 								<div class="canvas_div">
 								<canvas class="sort_canvas" id="canvas_radix">
@@ -319,26 +456,30 @@
 								</canvas>
 								</div>
 							</div>
+							<div class="show_div" id="radix_text" style="display: none;">
+								<p>O(w*n) w е номера битове за събиране на ключове </p><br>
+							</div>
 						</td>
 					</tr>
 				</div>
 				<div id = "oddEven_sort">
 					<tr id="Sorting-type">
 						<td class="Sort-Name">
-							<p>Odd-Even sort</p> 
-							<button type="submit" class="Extend" id="oddEven_show_button" onclick="show('oddEven_show_button', 'oddEven_div', oddEven_pause, oddEven_resume);" >Show Visualisation</button>
-							<div class="show_div" id="oddEven_div" style="display: none;">
+							<p>Четно–нечетно сортиране</p> 
+							<button type="submit" class="Extend" id="oddEven_show_button" onclick="show_options('oddEven_show_button', 'oddEven_div', oddEven_pause, oddEven_resume);" >Показване на Визуализацията</button>
+							<button type="submit" class="Extend" id="oddEven_text_show_button" onclick="show_text('oddEven_text_show_button', 'oddEven_text');" >Показване на Информацията</button>
+							<div class="show_options_div" id="oddEven_div" style="display: none;">
 								<div class = "customisation_div">
-									<div style="display: inline-block;"><p>Delay in milliseconds:</p></div>
+									<div style="display: inline-block;"><p>Забавяне във милисекунди:</p></div>
 									<div style="display: inline-block;"><input type="number" class="SliderValue" id="slider_text_oddEven" value="500" disabled="disabled"></div>
 									<input type="range" min="0" max="1000" value="500"  id="oddEven_delay" oninput="show_slider_value('slider_text_oddEven', oddEven_slider_value=value);">
 									<br>
 									<script src="buttons/stop_button.js"></script>
-									<p class="customization_text">Number of Pilons: </p>
+									<p class="customization_text">Брой пилони </p>
 									<input type="number" class="input" id="oddEven_n" value="30">
 									<br>
-									<button type="submit" class="reset_button" onclick="oddEven_n=document.getElementById('oddEven_n').value;oddEven_reset(canvas_oddEven, acceptable_number(oddEven_n), palette)"> Reset Visualisation</button>
-									<button type="submit" class="reset_button" id="oddEven_stop_button" onclick="stop_button('oddEven_stop_button', oddEven_pause, oddEven_resume)">Pause Visualisation</button>
+									<button type="submit" class="reset_button" onclick="oddEven_n=document.getElementById('oddEven_n').value;oddEven_reset(canvas_oddEven, acceptable_number(oddEven_n), palette)"> Пренаправяне</button>
+									<button type="submit" class="reset_button" id="oddEven_stop_button" onclick="stop_button('oddEven_stop_button', oddEven_pause, oddEven_resume)">Спиране</button>
 								</div>
 								<div class="canvas_div">
 								<canvas class="sort_canvas" id="canvas_oddEven">
@@ -349,26 +490,29 @@
 								</canvas>
 								</div>
 							</div>
+							<div class="show_div" id="oddEven_text" style="display: none;">
+								
+							</div>
 						</td>
 					</tr>
 				</div>
 				<div id = "shell_sort">
 					<tr id="Sorting-type">
 						<td class="Sort-Name">
-							<p>Shell sort</p> 
-							<button type="submit" class="Extend" id="shell_show_button" onclick="show('shell_show_button', 'shell_div', shell_pause, shell_resume);" >Show Visualisation</button>
-							<div class="show_div" id="shell_div" style="display: none;">
+							<p>Алгоритъм на Шел</p> 
+							<button type="submit" class="Extend" id="shell_show_button" onclick="show_options('shell_show_button', 'shell_div', shell_pause, shell_resume);" >Показване на Визуализацията</button>
+							<button type="submit" class="Extend" id="shell_text_show_button" onclick="show_text('shell_text_show_button', 'shell_text');" >Показване на Информацията</button>
+							<div class="show_options_div" id="shell_div" style="display: none;">
 								<div class = "customisation_div">
-									<div style="display: inline-block;"><p>Delay in milliseconds:</p></div>
+									<div style="display: inline-block;"><p>Забавяне във милисекунди:</p></div>
 									<div style="display: inline-block;"><input type="number" class="SliderValue" id="slider_text_shell" value="500" disabled="disabled"></div>
 									<input type="range" min="0" max="1000" value="500"  id="shell_delay" oninput="show_slider_value('slider_text_shell', shell_slider_value=value);">
 									<br>
-									<script src="buttons/stop_button.js"></script>
-									<p class="customization_text">Number of Pilons: </p>
+									<p class="customization_text">Брой пилони </p>
 									<input type="number" class="input" id="shell_n" value="30">
 									<br>
-									<button type="submit" class="reset_button" onclick="shell_n=document.getElementById('shell_n').value;shell_reset(canvas_shell, acceptable_number(shell_n), palette)"> Reset Visualisation</button>
-									<button type="submit" class="reset_button" id="shell_stop_button" onclick="stop_button('shell_stop_button', shell_pause, shell_resume)">Pause Visualisation</button>
+									<button type="submit" class="reset_button" onclick="shell_n=document.getElementById('shell_n').value;shell_reset(canvas_shell, acceptable_number(shell_n), palette)"> Пренаправяне</button>
+									<button type="submit" class="reset_button" id="shell_stop_button" onclick="stop_button('shell_stop_button', shell_pause, shell_resume)">Спиране</button>
 								</div>
 								<div class="canvas_div">
 								<canvas class="sort_canvas" id="canvas_shell">
@@ -378,6 +522,8 @@
 									</script>
 								</canvas>
 								</div>
+							</div>
+							<div class="show_div" id="shell_text" style="display: none;">
 							</div>
 						</td>
 					</tr>

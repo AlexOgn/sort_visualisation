@@ -28,6 +28,8 @@ th{
 
 .Extend{
 	display: inline-block;
+	float: right;
+	margin: 22px 10px auto auto;
 }
 
 
@@ -97,6 +99,7 @@ input[type=range]{
 }
 
 * {
+	scrollbar-width: none;
 	outline:0;
 	font-family: 'Times New Roman', Times, serif;
 }
@@ -120,7 +123,6 @@ input[type=range]::-moz-range-thumb {
 	height: 25px;
 	background: #44f;
 	cursor: pointer;
-	border-radius 0px;
 }
 
 .customisation_div{
@@ -149,7 +151,7 @@ input[type=range]::-moz-range-thumb {
 	border-color: transparent;
 	background-color: transparent;
 	color: white;
-	margin: 0px 0px 5% 0px;
+	margin: 5px 5px 20px 5px
 }
 
 .show_div{
@@ -162,5 +164,16 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 input[type=number] {
-  -moz-appearance: textfield;
+	-moz-appearance: textfield;
+}
+
+.info_text{
+	margin: 1px 2% 2% 2%;
+	font-size: 14px;
+}
+
+::-webkit-scrollbar{
+	display: none;
+	width: 0px;
+	background-color: transparent;
 }
