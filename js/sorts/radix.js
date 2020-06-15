@@ -3,6 +3,7 @@
 let radix_stop = false;
 let radix_pauses = 1;
 var radix_delay = document.getElementById("radix_delay");
+let radix_base = 2;
 
 async function getMax(array){
 	let max = 0;
@@ -14,15 +15,15 @@ async function getMax(array){
 }
 
 function getPosition(num,place){
-	return Math.floor(num / Math.pow(10,place)) % 10;
+	return Math.floor(num / Math.pow(radix_base,place)) % radix_base;
 }
 
 async function radix_sort_util(array, target_canvas, palette){
 	var max = await getMax(array);
 	for (let i = 0; i < max; i++) {
 		let sorted = true;
-		/*Makes an array of empty arrays with length 10*/
-		let buckets = Array.from({length:10}, () => []);
+		/*Makes an array of empty arrays with length radix_base*/
+		let buckets = Array.from({length:radix_base}, () => []);
 		for (let j = 0; j < array.length; j++){
 			buckets[getPosition(array[j].value, i)].push(array[j]);
 			array[j].id=1;
@@ -56,6 +57,8 @@ async function radix_sort_util(array, target_canvas, palette){
 	return radix_stop=false;
 }
 function radix_sort(target_canvas, n, palette){
+	radix_base = Number(document.getElementById("radix_base").value);
+	radix_base = radix_base < 2 ? 2 : radix_base;
 	let target_array=make_shuffeled_piloni(n);
 	radix_sort_util(target_array, target_canvas, palette);
 }

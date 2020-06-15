@@ -14,16 +14,16 @@ async function shell_sort_util(target_array, target_canvas, palette) {
 				target_array[j].value = target_array[j-increment].value;
 				j = j - increment;
 				target_array[j].value = temp;
+				target_array[i].id=2;
+				target_array[j].id=1;
 				drawArray(target_canvas, target_array, palette);
 				do{
 					shell_delay = document.getElementById("shell_delay");
 					await sleep(shell_delay.value);
 					if(shell_stop) return shell_stop=false;
 				}while(shell_pauses > 0) 
-				if(j>0){
-					target_array[j-1].id=0;
-				}
-				target_array[j].id=1;
+				target_array[i].id=0;
+				target_array[j].id=0;
 			}
 			
 	
