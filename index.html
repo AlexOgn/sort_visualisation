@@ -10,34 +10,34 @@
 			var palette = ["#0cf", "#8ff", "#0fa" ];
 		</script>
 		<div id="script_sourcing">
-			<script src="buttons/stop_button.js"></script>
-			<script src="buttons/slider_value.js"></script>
-			<script src="buttons/show.js"></script>
-			<script src="clone.js"></script>
-			<script src="drawer.js"></script>
-			<script src="pilon.js"></script>
-			<script src="sleep.js"></script>
-			<script src="acceptable_number.js"></script>
+			<script src="js/buttons/stop_button.js"></script>
+			<script src="js/buttons/slider_value.js"></script>
+			<script src="js/buttons/show.js"></script>
+			<script src="js/clone.js"></script>
+			<script src="js/drawer.js"></script>
+			<script src="js/pilon.js"></script>
+			<script src="js/sleep.js"></script>
+			<script src="js/acceptable_number.js"></script>
+			<script src="js/background.js"></script>
+			<script src="js/complex.js"></script>
+			<script src="js/make_shuffeled_piloni.js"></script>
 			<div id="sorts">
-				<script src="sorts/bubble.js"></script>
-				<script src="sorts/cocktail.js"></script>
-				<script src="sorts/insertion.js"></script>
-				<script src="sorts/heap.js"></script>
-				<script src="sorts/selection.js"></script>
-				<script src="sorts/merge.js"></script>
-				<script src="sorts/counting.js"></script>
-				<script src="sorts/quick.js"></script>
-				<script src="sorts/radix.js"></script>
-				<script src="sorts/odd-even.js"></script>
-				<script src="sorts/shell.js"></script>
+				<script src="js/sorts/bubble.js"></script>
+				<script src="js/sorts/cocktail.js"></script>
+				<script src="js/sorts/insertion.js"></script>
+				<script src="js/sorts/heap.js"></script>
+				<script src="js/sorts/selection.js"></script>
+				<script src="js/sorts/merge.js"></script>
+				<script src="js/sorts/counting.js"></script>
+				<script src="js/sorts/quick.js"></script>
+				<script src="js/sorts/radix.js"></script>
+				<script src="js/sorts/odd-even.js"></script>
+				<script src="js/sorts/shell.js"></script>
 			</div>
-			<script src="background.js"></script>
-			<script src="complex.js"></script>
-			<script src="make_shuffeled_piloni.js"></script>
 		</div>
 		<meta charset="UTF-8">
 
-		<title>Document</title>
+		<title>Методи за сортиране</title>
 	</head>
 	<body>
 		<canvas id="bg_canvas" >
@@ -474,7 +474,6 @@
 									<div style="display: inline-block;"><input type="number" class="SliderValue" id="slider_text_oddEven" value="500" disabled="disabled"></div>
 									<input type="range" min="0" max="1000" value="500"  id="oddEven_delay" oninput="show_slider_value('slider_text_oddEven', oddEven_slider_value=value);">
 									<br>
-									<script src="buttons/stop_button.js"></script>
 									<p class="customization_text">Брой пилони </p>
 									<input type="number" class="input" id="oddEven_n" value="30">
 									<br>
@@ -524,6 +523,16 @@
 								</div>
 							</div>
 							<div class="show_div" id="shell_text" style="display: none;">
+								<p>Най-бавен: O(n <sup>2</sup> )</p><br>
+								<p>Най-бърз: O(n log n)</p><br>
+								<p>Пример</p><br>
+								<p class="info_text">Алгоритъмът на Шел е обобщение на метода за сортиране чрез вмъкване, като позволява размяна на елементи, които са разделечени. Идеята е да се подреди листът от елементи, като се започне от някъде (обикновено около средата) и се смята, че всеки h-ти елемент дава сортиран лист. Подобен лист се казва, че е h-сортиран. Накрая се получават листове от интервали, всеки от които индивидуално сортиран. Започването с голяма стойност на h, позволява на елементите да се придвижват на големи разстояния и намалява възможността за доста произволни разбърквания. Също така се оставят по-малко на брой операции за малките h-сортирания. </p><br>
+								<p class="info_text">Методът е нестабилен. Той може да смени наредбата на елементи с еднаква стойност. Естественото му поведение е, че работи бързо когато масивът е отчасти сортиран. </p><br>
+								<p class="info_text">ледният пример показва сортиране чрез метода на Шел при разлика съответно 5, 3 и 1: </p><br>
+								<p class="info_text">входни данни:   80       72      71      30      64      43      98      41       30       01</p><br>
+								<p class="info_text">след 5-сортирне: 43       72      41      30      01      80      98      71       30       64</p><br>
+								<p class="info_text">след 3-сортиране: 01       30      30      64      41      71      43      72       98       80</p><br>
+								<p class="info_text">след 1-сортиране:   01       30      30      41      43      64      71      72       80       98</p><br>
 							</div>
 						</td>
 					</tr>
