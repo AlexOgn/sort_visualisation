@@ -458,6 +458,10 @@
 							</div>
 							<div class="show_div" id="radix_text" style="display: none;">
 								<p>O(w*n) w е номера битове за събиране на ключове </p><br>
+								<p>Принцип на действие</p><br>
+								<p class="info_text">Разделя елементите по най-младшата им цифра.</p><br>
+								<p class="info_text">След това ги разделя по втората най-младша и ако две числа имат еднаква втора най-младша цифра се запазва подреждането от предишната стъпка.</p><br>
+								<p class="info_text">Тези стъпки се повтарят до най-старшата цифра.</p><br>
 							</div>
 						</td>
 					</tr>
@@ -474,6 +478,7 @@
 									<div style="display: inline-block;"><input type="number" class="SliderValue" id="slider_text_oddEven" value="500" disabled="disabled"></div>
 									<input type="range" min="0" max="1000" value="500"  id="oddEven_delay" oninput="show_slider_value('slider_text_oddEven', oddEven_slider_value=value);">
 									<br>
+									<script src="buttons/stop_button.js"></script>
 									<p class="customization_text">Брой пилони </p>
 									<input type="number" class="input" id="oddEven_n" value="30">
 									<br>
@@ -490,7 +495,13 @@
 								</div>
 							</div>
 							<div class="show_div" id="oddEven_text" style="display: none;">
-								
+								<p>Най бавен: O(n<sup>2</sup>)</p><br>
+								<p>Най бавен: O(n)</p><br>
+								<p>Принцип на действие</p><br>
+								<p class="info_text">Работи подобно на метода на мехурчето</p><br>
+								<p class="info_text">Първо минава през всички нечетни индекси и ги сравнява със следващите</p><br>
+								<p class="info_text">После мниава през всички четни индекси и ги сравнява със следващите</p><br>
+								<p class="info_text">Стъпките се повтарят докато масива не се сортира</p><br>
 							</div>
 						</td>
 					</tr>
