@@ -3,6 +3,15 @@
 	outline:0;
 	font-family: 'Times New Roman', Times, serif;
 }
+a{
+	color: white;
+	text-decoration: none;
+}
+
+a:hover{
+	text-decoration: underline;
+	color: hotpink;
+}
 
 p{
 	margin-left: 5px;
@@ -69,6 +78,46 @@ th{
 	background-color: #8ff8;
 }
 
+/* ul and li */
+
+.creator{
+	vertical-align: top;
+	position: relative;
+	list-style-type: none;
+	top: 0px;
+	height: 100%;
+	width: 25%;
+	display: inline-block;
+	background-color: #44f;
+	border: solid #8ff8 2px;
+	margin-left: auto;
+}
+
+.creator_descripion{
+	margin-right: 6%;
+}
+.creator:hover{
+	border:2px solid #8ff;
+}
+
+li{
+	color: white;
+}
+
+.accomplishment{
+	margin-right: 6%;
+}
+.accomplishment::before {
+	content: "-";
+}
+
+.name_creator{
+	font-size: 25px;
+	margin: 4% 0px 4% 0px;
+	width: 90%;
+	display: inline-block;
+	text-align: center;
+}
 /* Buttons and inputs */
 
 .Extend{
@@ -83,6 +132,20 @@ th{
 }
 
 .Extend:hover{
+	color:#8ff;
+	border:2px solid #8ff;
+
+}
+.creators_extend{
+	margin-left: 45%;
+	width: 10%;
+	display: inline-block;
+	background-color: #44f;
+	color: #0cf;
+	border:2px solid #8ff8;
+}
+
+.creators_extend:hover{
 	color:#8ff;
 	border:2px solid #8ff;
 }
